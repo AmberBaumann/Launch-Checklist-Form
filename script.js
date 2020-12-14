@@ -6,10 +6,17 @@ function loaded() {
       let coPilotInput = document.querySelector("input[name=copilotName]");
       let fuelInput = document.querySelector("input[name=fuelLevel]");
       let cargoInput = document.querySelector("input[name=cargoMass]");
-      if (pilotInput.value === "" || coPilotInput === "") {
+
+      if (pilotInput.value === "" || coPilotInput.value === "" || fuelInput.value === "" || cargoInput.value === "") {
          alert("All fields are required!")
          event.preventDefault();
       };
+
+      if (isNaN(fuelInput.value) || isNaN(cargoInput.value)) {
+         alert("Invalid input!")
+         event.preventDefault();
+      }
+
    });
 };
 window.onload = loaded();
