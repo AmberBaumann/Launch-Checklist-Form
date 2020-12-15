@@ -20,11 +20,6 @@ function loaded() {
          alert("Invalid input!")
          event.preventDefault();
       }
-
-      // if ((fuelInput.value) || isNaN(cargoInput.value)) {
-      //    alert("Invalid input!")
-      //    event.preventDefault();
-      // }
    });
 };
 window.onload = loaded();
