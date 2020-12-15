@@ -7,16 +7,24 @@ function loaded() {
       let fuelInput = document.querySelector("input[name=fuelLevel]");
       let cargoInput = document.querySelector("input[name=cargoMass]");
 
+      const letters = /^[a-zA-Z]+$/;
+      const numbers = /^[0-9]+$/;
+
+
       if (pilotInput.value === "" || coPilotInput.value === "" || fuelInput.value === "" || cargoInput.value === "") {
          alert("All fields are required!")
          event.preventDefault();
       };
 
-      if (isNaN(fuelInput.value) || isNaN(cargoInput.value)) {
+      if (!letters.test(pilotInput.value) || !letters.test(coPilotInput.value) || !numbers.test(fuelInput.value) || !numbers.test(cargoInput.value)) {
          alert("Invalid input!")
          event.preventDefault();
       }
 
+      // if ((fuelInput.value) || isNaN(cargoInput.value)) {
+      //    alert("Invalid input!")
+      //    event.preventDefault();
+      // }
    });
 };
 window.onload = loaded();
