@@ -12,11 +12,16 @@ function loaded() {
       const numbers = /^[0-9]+$/;
 
 
-      if (pilotInput.value === "" || coPilotInput.value === "" || fuelInput.value === "" || cargoInput.value === "") {
-         alert("All fields are required!")
-      } else if (!letters.test(pilotInput.value) || !letters.test(coPilotInput.value) || !numbers.test(fuelInput.value) || !numbers.test(cargoInput.value)) {
-         alert("Invalid input!")
-      };
+      function validation() {
+         if (pilotInput.value === "" || coPilotInput.value === "" || fuelInput.value === "" || cargoInput.value === "") {
+            alert("All fields are required!")
+            return faultyItems.style.visibility = 'hidden';
+         } else if (!letters.test(pilotInput.value) || !letters.test(coPilotInput.value) || !numbers.test(fuelInput.value) || !numbers.test(cargoInput.value)) {
+            alert("Invalid input!")
+            return faultyItems.style.visibility = 'hidden';
+         };
+      }
+      validation();
       statusUpdate();
       event.preventDefault();
    });
