@@ -28,6 +28,8 @@ function loaded() {
 
    //UPDATING SHUTTLE REQUIREMENTS
    let statusUpdate = function () {
+      const letters = /^[a-zA-Z]+$/;
+      const numbers = /^[0-9]+$/;
       faultyItems.style.visibility = 'visible';
       pilotStatus.innerText = `Pilot ${pilotInput.value} is ready for launch.`;
       copilotStatus.innerText = `Co-pilot ${coPilotInput.value} is ready for launch.`;
@@ -38,6 +40,12 @@ function loaded() {
          launchStatus.innerText = `Shuttle not ready for launch`;
       } else if (Number(cargoInput.value) > 10000) {
          cargoStatus.innerText = `Cargo mass too heavy for launch`;
+         launchStatus.style.color = `red`;
+         launchStatus.innerText = `Shuttle not ready for launch`;
+      } else if (pilotInput.value === "" || coPilotInput.value === "" || fuelInput.value === "" || cargoInput.value === "") {
+         launchStatus.style.color = `red`;
+         launchStatus.innerText = `Shuttle not ready for launch`;
+      } else if (!letters.test(pilotInput.value) || !letters.test(coPilotInput.value) || !numbers.test(fuelInput.value) || !numbers.test(cargoInput.value)) {
          launchStatus.style.color = `red`;
          launchStatus.innerText = `Shuttle not ready for launch`;
       } else {
